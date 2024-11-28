@@ -1,39 +1,83 @@
+/* Variables */
 :root {
-    --primary-color: #6c7b95;
-    --background-color: #f4f4f4;
+    --primary-gradient: linear-gradient(90deg, #6c7b95, #9b1b30);
     --text-color: #333;
-    --button-color: #9b1b30;
-    --button-hover-color: #6c7b95;
+    --button-bg: rgba(255, 255, 255, 0.2);
+    --button-border: rgba(255, 255, 255, 0.4);
+    --button-hover-bg: rgba(255, 255, 255, 0.4);
+    --button-text: #fff;
     --font-family: 'Arial', sans-serif;
+    --circle1: rgba(108, 123, 149, 0.5);
+    --circle2: rgba(155, 27, 48, 0.5);
+    --circle3: rgba(255, 189, 89, 0.5);
+    --circle-blur: 80px;
 }
 
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body & Background */
 body {
     font-family: var(--font-family);
-    background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.6;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    position: relative;
 }
 
+/* Background Circles */
+.background::before,
+.background::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(var(--circle-blur));
+    pointer-events: none;
+    z-index: -1;
+}
+
+.background::before {
+    width: 300px;
+    height: 300px;
+    background: var(--circle1);
+    top: 10%;
+    left: 15%;
+}
+
+.background::after {
+    width: 400px;
+    height: 400px;
+    background: var(--circle2);
+    bottom: 15%;
+    right: 20%;
+}
+
+/* Header */
 .header {
-    background-color: var(--primary-color);
-    color: #fff;
     text-align: center;
-    padding: 1rem 0;
+    margin-bottom: 2rem;
 }
 
+.header h1 {
+    font-size: 3rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Main Content */
 .main {
-    flex: 1;
-    padding: 2rem;
     text-align: center;
+    max-width: 600px;
+    padding: 2rem;
 }
 
 .info h2 {
@@ -46,24 +90,28 @@ body {
     font-size: 1rem;
 }
 
+/* Glass Effect Button */
 .booking-button {
     display: inline-block;
-    background-color: var(--button-color);
-    color: #fff;
+    background: var(--button-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--button-border);
+    color: var(--button-text);
     text-decoration: none;
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .booking-button:hover {
-    background-color: var(--button-hover-color);
+    background: var(--button-hover-bg);
+    transform: scale(1.05);
 }
 
+/* Footer */
 .footer {
-    background-color: var(--primary-color);
-    color: #fff;
+    margin-top: 2rem;
     text-align: center;
-    padding: 1rem 0;
+    font-size: 0.9rem;
 }
