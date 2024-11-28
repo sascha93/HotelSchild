@@ -1,16 +1,15 @@
-/* Variables */
+/* Variablen */
 :root {
-    --primary-gradient: linear-gradient(90deg, #6c7b95, #9b1b30);
+    --font-family: 'Arial', sans-serif;
     --text-color: #333;
+    --heading-gradient: linear-gradient(90deg, #6c7b95, #9b1b30);
     --button-bg: rgba(255, 255, 255, 0.2);
     --button-border: rgba(255, 255, 255, 0.4);
     --button-hover-bg: rgba(255, 255, 255, 0.4);
-    --button-text: #fff;
-    --font-family: 'Arial', sans-serif;
-    --circle1: rgba(108, 123, 149, 0.5);
-    --circle2: rgba(155, 27, 48, 0.5);
-    --circle3: rgba(255, 189, 89, 0.5);
-    --circle-blur: 80px;
+    --button-text-color: #fff;
+    --circle-color1: rgba(108, 123, 149, 0.5);
+    --circle-color2: rgba(155, 27, 48, 0.5);
+    --circle-blur: 100px;
 }
 
 /* Reset */
@@ -20,20 +19,19 @@
     box-sizing: border-box;
 }
 
-/* Body & Background */
+/* Body & Hintergrund */
 body {
     font-family: var(--font-family);
     color: var(--text-color);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
     background-color: #f4f4f4;
     position: relative;
+    overflow: hidden;
 }
 
-/* Background Circles */
 .background::before,
 .background::after {
     content: '';
@@ -47,17 +45,17 @@ body {
 .background::before {
     width: 300px;
     height: 300px;
-    background: var(--circle1);
-    top: 10%;
-    left: 15%;
+    background: var(--circle-color1);
+    top: -50px;
+    left: -50px;
 }
 
 .background::after {
     width: 400px;
     height: 400px;
-    background: var(--circle2);
-    bottom: 15%;
-    right: 20%;
+    background: var(--circle-color2);
+    bottom: -100px;
+    right: -100px;
 }
 
 /* Header */
@@ -68,16 +66,21 @@ body {
 
 .header h1 {
     font-size: 3rem;
-    background: var(--primary-gradient);
+    background: var(--heading-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
-/* Main Content */
+/* Hauptinhalt */
 .main {
     text-align: center;
     max-width: 600px;
     padding: 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
 }
 
 .info h2 {
@@ -90,18 +93,20 @@ body {
     font-size: 1rem;
 }
 
-/* Glass Effect Button */
+/* Glas-Effekt-Button */
 .booking-button {
     display: inline-block;
     background: var(--button-bg);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--button-border);
-    color: var(--button-text);
+    color: var(--button-text-color);
     text-decoration: none;
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     border-radius: 10px;
     transition: background 0.3s, transform 0.2s;
+    margin-top: 1rem;
 }
 
 .booking-button:hover {
@@ -114,4 +119,5 @@ body {
     margin-top: 2rem;
     text-align: center;
     font-size: 0.9rem;
+    color: #777;
 }
